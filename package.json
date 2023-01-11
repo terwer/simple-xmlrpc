@@ -1,10 +1,14 @@
 {
   "name": "simple-xmlrpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a simple xmlrpc client and server in TypeScript",
   "main": "xmlrpc/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/terwer/simple-xmlrpc.git"
   },
   "keywords": [
     "xmlrpc",
@@ -12,6 +16,10 @@
     "typescript"
   ],
   "author": "terwer",
+  "bugs": {
+    "url": "https://github.com/terwer/simple-xmlrpc/issues"
+  },
+  "homepage": "https://github.com/terwer/simple-xmlrpc/blob/main/README.md",
   "license": "GPL",
   "dependencies": {
     "cross-fetch": "^3.1.5",
