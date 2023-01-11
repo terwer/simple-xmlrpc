@@ -1,0 +1,26 @@
+{
+  "name": "simple-xmlrpc",
+  "version": "1.0.0",
+  "description": "a simple xmlrpc client and server in TypeScript",
+  "main": "xmlrpc/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "xmlrpc",
+    "ts",
+    "typescript"
+  ],
+  "author": "terwer",
+  "license": "GPL",
+  "dependencies": {
+    "cross-fetch": "^3.1.5",
+    "sax": "^1.2.4",
+    "xmlbuilder2": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.1",
+    "prettier": "^2.8.2",
+    "vitest": "^0.27.0"
+  }
+}
