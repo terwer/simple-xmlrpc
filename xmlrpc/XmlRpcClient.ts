@@ -34,7 +34,7 @@ import {
   XmlRpcValue,
   XmlRpcValueOrFault,
 } from "./XmlRpcTypes"
-import { XmlrpcUtil } from "../custom/xmlrpcUtil"
+import { XmlrpcUtil } from "../custom/XmlrpcUtil"
 
 // A client for making XML-RPC method calls over HTTP(S)
 export class XmlRpcClient {

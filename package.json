@@ -1,6 +1,6 @@
 {
   "name": "simple-xmlrpc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a simple xmlrpc client and server in TypeScript",
   "main": "xmlrpc/index.ts",
   "scripts": {
