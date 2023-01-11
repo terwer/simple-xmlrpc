@@ -1,7 +1,7 @@
 {
   "name": "simple-xmlrpc",
-  "version": "1.0.2",
-  "description": "a simple xmlrpc client and server in TypeScript",
+  "version": "1.1.0",
+  "description": "a simple xmlrpc client in TypeScript",
   "main": "xmlrpc/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "xmlrpc",
+    "client",
     "ts",
     "typescript"
   ],
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/terwer/simple-xmlrpc/blob/main/README.md",
   "license": "GPL",
   "dependencies": {
+    "byte-base64": "^1.1.0",
     "cross-fetch": "^3.1.5",
     "sax": "^1.2.4",
     "xmlbuilder2": "^3.0.2"

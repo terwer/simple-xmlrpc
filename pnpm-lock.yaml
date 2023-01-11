@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/node': ^16.18.1
+  byte-base64: ^1.1.0
   cross-fetch: ^3.1.5
   prettier: ^2.8.2
   sax: ^1.2.4
@@ -9,6 +10,7 @@ specifiers:
   xmlbuilder2: ^3.0.2
 
 dependencies:
+  byte-base64: 1.1.0
   cross-fetch: 3.1.5
   sax: 1.2.4
   xmlbuilder2: 3.0.2
@@ -284,6 +286,10 @@ packages:
   /buffer-from/1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: true
+
+  /byte-base64/1.1.0:
+    resolution: {integrity: sha512-56cXelkJrVMdCY9V/3RfDxTh4VfMFCQ5km7B7GkIGfo4bcPL9aACyJLB0Ms3Ezu5rsHmLB2suis96z4fLM03DA==}
+    dev: false
 
   /cac/6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
