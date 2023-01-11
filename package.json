@@ -1,5 +1,5 @@
 {
-  "name": "a simple xmlrpc client and server in TypeScript",
+  "name": "simple-xmlrpc",
   "version": "1.0.0",
   "description": "a simple xmlrpc client and server in TypeScript",
   "main": "xmlrpc/index.ts",
