@@ -37,7 +37,7 @@ export class XmlrpcUtil {
       console.warn("xml头部有非法字符，将去除=>", resText)
       resText = resText.substring(startIndex, resText.length)
     }
-    console.log("methodCall resText=>", resText)
+    // console.log("methodCall resText=>", resText)
     return resText
   }
 }
