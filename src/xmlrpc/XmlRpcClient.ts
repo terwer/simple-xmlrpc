@@ -67,6 +67,11 @@ export class XmlRpcClient {
     let res: Response
     try {
       res = await fetch(this.url, { method: "POST", headers, body })
+      const isRedirect = res.url !== this.url
+      if (isRedirect) {
+        console.log("检测到后端已开启资源重定向，重发请求")
+        res = await fetch(res.url, { method: "POST", headers, body })
+      }
     } catch (err) {
       if ((err as Error).message === "Failed to fetch") {
         throw new Error(

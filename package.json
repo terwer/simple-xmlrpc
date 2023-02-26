@@ -1,8 +1,8 @@
 {
   "name": "simple-xmlrpc",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "a simple xmlrpc client in TypeScript",
-  "main": "xmlrpc/index.ts",
+  "main": "src/xmlrpc/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.18.1",
+    "dotenv": "^16.0.3",
     "prettier": "^2.8.2",
     "vitest": "^0.27.0"
   }
