@@ -23,11 +23,11 @@
  * questions.
  */
 
-export * from "./Deserializer"
-export * from "./HttpTypes"
-export * from "./Serializer"
-export * from "./XmlRpcClient"
-export * from "./XmlRpcFault"
-export * from "./XmlRpcTypes"
-export * from "../custom/SimpleXmlRpcClient"
-export * from "../custom/XmlrpcUtil"
+export * from "./xmlrpc/Deserializer"
+export * from "./xmlrpc/HttpTypes"
+export * from "./xmlrpc/Serializer"
+export * from "./xmlrpc/XmlRpcClient"
+export * from "./xmlrpc/XmlRpcFault"
+export * from "./xmlrpc/XmlRpcTypes"
+export * from "./custom/SimpleXmlRpcClient"
+export * from "./custom/XmlrpcUtil"

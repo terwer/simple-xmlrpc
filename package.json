@@ -5,7 +5,11 @@
   "main": "src/xmlrpc/index.ts",
   "type": "module",
   "scripts": {
-    "test": "vitest"
+    "serve": "vite",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "start": "vite preview",
+    "test": "npx vitest --watch"
   },
   "repository": {
     "type": "git",
@@ -17,22 +21,27 @@
     "ts",
     "typescript"
   ],
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "^1.2.0",
+    "@types/node": "^16.18.1",
+    "@types/sax": "^1.2.4",
+    "dotenv": "^16.0.3",
+    "minimist": "^1.2.8",
+    "rollup-plugin-livereload": "^2.0.5",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-static-copy": "^0.15.0",
+    "vitest": "^0.27.0"
+  },
+  "dependencies": {
+    "byte-base64": "^1.1.0",
+    "cross-fetch": "^3.1.6",
+    "sax": "^1.2.4",
+    "xmlbuilder2": "^3.0.2"
+  },
   "author": "terwer",
   "bugs": {
     "url": "https://github.com/terwer/simple-xmlrpc/issues"
   },
   "homepage": "https://github.com/terwer/simple-xmlrpc/blob/main/README.md",
-  "license": "GPL",
-  "devDependencies": {
-    "@terwer/eslint-config-custom": "^1.2.0",
-    "@types/node": "^16.18.1",
-    "dotenv": "^16.0.3",
-    "vitest": "^0.27.0"
-  },
-  "dependencies": {
-    "byte-base64": "^1.1.0",
-    "cross-fetch": "^3.1.5",
-    "sax": "^1.2.4",
-    "xmlbuilder2": "^3.0.2"
-  }
+  "license": "GPL"
 }

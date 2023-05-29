@@ -19,7 +19,7 @@ describe("test custom", () => {
     console.log(status, errorJson)
   }
 
-  it("test SimpleXmlRpcClient", async () => {
+  it("test getUsersBlogs", async () => {
     // 发送真实请求并获取结果
     console.log("开始发送真实请求并获取结果")
 

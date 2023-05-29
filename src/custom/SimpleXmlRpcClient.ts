@@ -23,7 +23,7 @@
  * questions.
  */
 
-import { XmlRpcClient } from "../xmlrpc"
+import { XmlRpcClient } from "../xmlrpc/XmlRpcClient"
 
 /**
  * 简单的Xmlrpc客户端
