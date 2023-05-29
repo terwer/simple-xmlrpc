@@ -1,10 +1,11 @@
 {
   "name": "simple-xmlrpc",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "a simple xmlrpc client in TypeScript",
   "main": "src/xmlrpc/index.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "xmlbuilder2": "^3.0.2"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@types/node": "^16.18.1",
     "dotenv": "^16.0.3",
     "prettier": "^2.8.2",

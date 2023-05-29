@@ -29,7 +29,7 @@ describe("test custom", () => {
     const password = process.env.XMLRPC_PASSWORD || ""
 
     const xmlrpcApiUrl = apiUrl
-    const reqMethod = "blogger.getUsersBlogs"
+    const reqMethod = "metaWeblog.getUsersBlogs"
     const reqParams = [blogid, username, password]
 
     let err

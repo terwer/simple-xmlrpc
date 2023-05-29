@@ -28,12 +28,7 @@ import fetch from "cross-fetch"
 import { Deserializer } from "./Deserializer"
 import { serializeMethodCall } from "./Serializer"
 import { XmlRpcFault } from "./XmlRpcFault"
-import {
-  Encoding,
-  XmlRpcStruct,
-  XmlRpcValue,
-  XmlRpcValueOrFault,
-} from "./XmlRpcTypes"
+import { Encoding, XmlRpcStruct, XmlRpcValue, XmlRpcValueOrFault } from "./XmlRpcTypes"
 import { XmlrpcUtil } from "../custom/XmlrpcUtil"
 
 // A client for making XML-RPC method calls over HTTP(S)
@@ -45,10 +40,7 @@ export class XmlRpcClient {
     Accept: "text/xml",
   }
 
-  constructor(
-    url: string,
-    options?: { encoding?: Encoding; headers?: Record<string, string> }
-  ) {
+  constructor(url: string, options?: { encoding?: Encoding; headers?: Record<string, string> }) {
     this.url = url
     this.encoding = options?.encoding
     if (options?.headers != undefined) {
@@ -57,10 +49,7 @@ export class XmlRpcClient {
   }
 
   // Make an XML-RPC call to the server and return the response
-  async methodCall(
-    method: string,
-    params?: XmlRpcValue[]
-  ): Promise<XmlRpcValue> {
+  async methodCall(method: string, params?: XmlRpcValue[]): Promise<XmlRpcValue> {
     const body = serializeMethodCall(method, params, this.encoding)
     const headers = this.headers
 
@@ -74,27 +63,22 @@ export class XmlRpcClient {
       }
     } catch (err) {
       if ((err as Error).message === "Failed to fetch") {
-        throw new Error(
-          `XML-RPC call "${method}" to ${this.url} failed to connect`
-        )
+        throw new Error(`XML-RPC call "${method}" to ${this.url} failed to connect`)
       }
       throw err
     }
     if (!res.ok) {
-      throw new Error(
-        `XML-RPC call "${method}" to ${this.url} returned ${res.status}: "${res.statusText}"`
-      )
+      throw new Error(`XML-RPC call "${method}" to ${this.url} returned ${res.status}: "${res.statusText}"`)
     }
 
     let resText = await res.text()
+    console.log("XML-RPC return =>", { resText: resText })
     resText = XmlrpcUtil.removeXmlHeader(resText)
     const deserializer = new Deserializer(this.encoding)
     return await deserializer.deserializeMethodResponse(resText)
   }
 
-  async multiMethodCall(
-    requests: { methodName: string; params: XmlRpcValue[] }[]
-  ): Promise<XmlRpcValueOrFault[]> {
+  async multiMethodCall(requests: { methodName: string; params: XmlRpcValue[] }[]): Promise<XmlRpcValueOrFault[]> {
     const res = await this.methodCall("system.multicall", [requests])
     if (!Array.isArray(res) || res.length !== requests.length) {
       throw new Error(`malformed system.multicall response`)
@@ -103,10 +87,8 @@ export class XmlRpcClient {
     const output: XmlRpcValueOrFault[] = []
 
     const createFault = (fault: XmlRpcStruct = {}) => {
-      const faultString =
-        typeof fault.faultString === "string" ? fault.faultString : undefined
-      const faultCode =
-        typeof fault.faultCode === "number" ? fault.faultCode : undefined
+      const faultString = typeof fault.faultString === "string" ? fault.faultString : undefined
+      const faultCode = typeof fault.faultCode === "number" ? fault.faultCode : undefined
       return new XmlRpcFault(faultString, faultCode)
     }
 
