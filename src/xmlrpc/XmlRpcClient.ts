@@ -51,6 +51,7 @@ export class XmlRpcClient {
   // Make an XML-RPC call to the server and return the response
   async methodCall(method: string, params?: XmlRpcValue[]): Promise<XmlRpcValue> {
     const body = serializeMethodCall(method, params, this.encoding)
+    console.log("XML-RPC request =>", { body: body })
     const headers = this.headers
 
     let res: Response
