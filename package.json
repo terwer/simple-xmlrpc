@@ -23,17 +23,16 @@
   },
   "homepage": "https://github.com/terwer/simple-xmlrpc/blob/main/README.md",
   "license": "GPL",
+  "devDependencies": {
+    "@terwer/eslint-config-custom": "^1.2.0",
+    "@types/node": "^16.18.1",
+    "dotenv": "^16.0.3",
+    "vitest": "^0.27.0"
+  },
   "dependencies": {
     "byte-base64": "^1.1.0",
     "cross-fetch": "^3.1.5",
     "sax": "^1.2.4",
     "xmlbuilder2": "^3.0.2"
-  },
-  "devDependencies": {
-    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@types/node": "^16.18.1",
-    "dotenv": "^16.0.3",
-    "prettier": "^2.8.2",
-    "vitest": "^0.27.0"
   }
 }
