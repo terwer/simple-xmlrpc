@@ -23,16 +23,17 @@
  * questions.
  */
 
-import fetch from "cross-fetch"
-
+import { Serializer } from "./Serializer"
 import { Deserializer } from "./Deserializer"
-import { serializeMethodCall } from "./Serializer"
 import { XmlRpcFault } from "./XmlRpcFault"
 import { Encoding, XmlRpcStruct, XmlRpcValue, XmlRpcValueOrFault } from "./XmlRpcTypes"
 import { XmlrpcUtil } from "../custom/XmlrpcUtil"
 
 // A client for making XML-RPC method calls over HTTP(S)
 export class XmlRpcClient {
+  private readonly fetch
+  private serializer: Serializer
+
   url: string
   encoding?: Encoding
   headers = {
@@ -40,7 +41,14 @@ export class XmlRpcClient {
     Accept: "text/xml",
   }
 
-  constructor(url: string, options?: { encoding?: Encoding; headers?: Record<string, string> }) {
+  constructor(appInstance: any, url: string, options?: { encoding?: Encoding; headers?: Record<string, string> }) {
+    if (!appInstance.fetch) {
+      throw new Error("appInstance must have fetch property")
+    }
+
+    this.fetch = appInstance.fetch
+    this.serializer = new Serializer(appInstance)
+
     this.url = url
     this.encoding = options?.encoding
     if (options?.headers != undefined) {
@@ -50,17 +58,17 @@ export class XmlRpcClient {
 
   // Make an XML-RPC call to the server and return the response
   async methodCall(method: string, params?: XmlRpcValue[]): Promise<XmlRpcValue> {
-    const body = serializeMethodCall(method, params, this.encoding)
+    const body = this.serializer.serializeMethodCall(method, params, this.encoding)
     console.log("XML-RPC request =>", { body: body })
     const headers = this.headers
 
     let res: Response
     try {
-      res = await fetch(this.url, { method: "POST", headers, body })
+      res = await this.fetch(this.url, { method: "POST", headers, body })
       const isRedirect = res.url !== this.url
       if (isRedirect) {
         console.log("检测到后端已开启资源重定向，重发请求")
-        res = await fetch(res.url, { method: "POST", headers, body })
+        res = await this.fetch(res.url, { method: "POST", headers, body })
       }
     } catch (err) {
       if ((err as Error).message === "Failed to fetch") {

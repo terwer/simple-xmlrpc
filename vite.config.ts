@@ -61,7 +61,7 @@ export default defineConfig({
       plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: [],
+      external: ["node:buffer"],
       output: {
         entryFileNames: "[name].js",
       },

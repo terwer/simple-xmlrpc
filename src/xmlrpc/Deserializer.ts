@@ -65,9 +65,7 @@ export class Deserializer {
     this._parser.on("error", this._onError)
   }
 
-  async deserializeMethodResponse(
-    data: string | ArrayBuffer
-  ): Promise<XmlRpcValue> {
+  async deserializeMethodResponse(data: string | ArrayBuffer): Promise<XmlRpcValue> {
     return await new Promise((resolve, reject) => {
       this._callback = (error, result) => {
         if (error != undefined) {
@@ -87,9 +85,7 @@ export class Deserializer {
     })
   }
 
-  async deserializeMethodCall(
-    data: string
-  ): Promise<[methodName: string, args: XmlRpcValue[]]> {
+  async deserializeMethodCall(data: string): Promise<[methodName: string, args: XmlRpcValue[]]> {
     return await new Promise((resolve, reject) => {
       this._callback = (error, result) => {
         if (error != undefined) {
@@ -113,12 +109,8 @@ export class Deserializer {
         this._callback(new Error(`Invalid XML-RPC ${this._type ?? "message"}`))
       } else if (this._responseType === "fault") {
         const createFault = (fault: XmlRpcStruct) => {
-          const faultString =
-            typeof fault.faultString === "string"
-              ? fault.faultString
-              : undefined
-          const faultCode =
-            typeof fault.faultCode === "number" ? fault.faultCode : undefined
+          const faultString = typeof fault.faultString === "string" ? fault.faultString : undefined
+          const faultCode = typeof fault.faultCode === "number" ? fault.faultCode : undefined
           return new XmlRpcFault(faultString, faultCode)
         }
         this._callback(createFault(this._stack[0] as XmlRpcStruct))

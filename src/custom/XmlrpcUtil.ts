@@ -31,7 +31,7 @@ export class XmlrpcUtil {
    * 移除xml头部有非法字符
    * @param resText xml字符串
    */
-  static removeXmlHeader(resText: string): string {
+  public static removeXmlHeader(resText: string): string {
     const startIndex = resText.indexOf("<?xml")
     if (startIndex > 0) {
       console.warn("xml头部有非法字符，将去除=>", resText)
