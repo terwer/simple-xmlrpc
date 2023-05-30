@@ -6,6 +6,7 @@ import { viteStaticCopy } from "vite-plugin-static-copy"
 import dts from "vite-plugin-dts"
 import minimist from "minimist"
 import livereload from "rollup-plugin-livereload"
+import { nodePolyfills } from "vite-plugin-node-polyfills"
 
 const args = minimist(process.argv.slice(2))
 const isWatch = args.watch || args.w || false
@@ -32,6 +33,13 @@ export default defineConfig({
         },
       ],
     }),
+
+    // 在浏览器中polyfill node
+    // https://github.com/davidmyersdev/vite-plugin-node-polyfills/blob/main/test/src/main.ts
+    nodePolyfills({
+      exclude: ["fs"],
+      protocolImports: true,
+    }),
   ],
 
   build: {
@@ -47,13 +55,13 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.ts"),
       // the proper extensions will be added
       fileName: "index",
-      formats: ["cjs"],
+      formats: ["es"],
     },
     rollupOptions: {
       plugins: [...(isWatch ? [livereload(devDistDir)] : [])],
       // make sure to externalize deps that shouldn't be bundled
       // into your library
-      external: ["cross-fetch"],
+      external: [],
       output: {
         entryFileNames: "[name].js",
       },

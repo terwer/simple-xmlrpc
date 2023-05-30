@@ -29,6 +29,8 @@ import { DateFormatter } from "./DateFormatter"
 import { XmlRpcFault } from "./XmlRpcFault"
 import { Encoding, XmlRpcStruct, XmlRpcValue } from "./XmlRpcTypes"
 
+import { Buffer } from "node:buffer"
+
 type XmlNode = { name: string; body: string }
 type DeserializerType = "methodcall" | "methodresponse"
 type ResponseType = "params" | "fault"

@@ -32,6 +32,8 @@ import { DateFormatter } from "./DateFormatter"
 import { XmlRpcFault } from "./XmlRpcFault"
 import { Encoding, XmlRpcStruct, XmlRpcValue } from "./XmlRpcTypes"
 
+import { Buffer } from "node:buffer"
+
 type ValueInfo = {
   index?: number
   keys?: string[]
