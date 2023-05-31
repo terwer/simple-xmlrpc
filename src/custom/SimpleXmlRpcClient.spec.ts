@@ -1,8 +1,20 @@
 import { describe, it } from "vitest"
 import { SimpleXmlRpcClient } from "./SimpleXmlRpcClient"
 import fs from "fs"
+import path from "path"
 
-describe("test custom", () => {
+describe("test custom", async () => {
+  // appInstance
+  const appInstance: any = {}
+  // const projectBase = path.resolve(__dirname, "../../..")
+  const moduleBase = path.resolve(__dirname, "../../../../../../..")
+  appInstance.fetch = fetch
+  appInstance.xmlbuilder2 = (await import(path.join(moduleBase, "xmlbuilder2"))) as any
+  const simpleXmlrpc = (await import(path.join(moduleBase, "simple-xmlrpc/dist/index.js"))) as any
+  appInstance.simpleXmlrpc = {
+    SimpleXmlRpcClient: simpleXmlrpc["SimpleXmlRpcClient"],
+  }
+
   function writeData(data: any) {
     writeStatusData(data, 200)
   }
@@ -35,7 +47,7 @@ describe("test custom", () => {
 
     let err
     try {
-      const client = new SimpleXmlRpcClient(xmlrpcApiUrl)
+      const client = new SimpleXmlRpcClient(appInstance, xmlrpcApiUrl, {})
 
       const result = await client.methodCall(reqMethod, reqParams)
       writeData(result)
@@ -73,7 +85,7 @@ describe("test custom", () => {
 
     let err
     try {
-      const client = new SimpleXmlRpcClient(xmlrpcApiUrl)
+      const client = new SimpleXmlRpcClient(appInstance, xmlrpcApiUrl, {})
 
       const result = await client.methodCall(reqMethod, reqParams)
       writeData(result)
