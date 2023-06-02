@@ -2,6 +2,7 @@
 node_modules
 dist
 testdata
+.DS_Store
 
 # local env files
 .env*.local
